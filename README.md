@@ -24,3 +24,20 @@ Porque ya existe y si queremos ejecutarlo otra vez: se borra o se cambian los pa
 5. (MP-4, paso 6) Si mañana llega el archivo del 25 y corres otra vez el cierre del 25, ¿será otra instancia u
    otra ejecución de la misma? ¿Por qué lo crees?
    Yo creo que seria otra instancia del mismo job pero con parametros diferentes porque si no pasaría lo de la pregunta anterior
+
+   ## Día 2 · El primer chunk
+
+### Boleto de salida
+
+1. ¿Qué diferencia hay entre un step de tipo Tasklet y uno de tipo chunk?
+Un tasklet se define por realizar una tarea, es decir, un job es tipo tasklet porque ejecuta una tarea; un chunk es igual una tarea pero se diferecía en que con el trabajamos con datos extraidos de un .csv.
+2. ¿Qué hace cada una de las tres piezas de un chunk? ¿Cuál es opcional?
+Lector lee los datos del .csv.
+Escritor: guarda en mysql los movimientos que se realizaron.
+Procesador: limpia los mocimientos
+3. Con 45 movimientos y chunks de 10, ¿cuántos commits habría? ¿Y con chunks de 50? 5 en ambos. 45 = (10*4) + (5*1)
+50 = (5*10)
+4. ¿Por qué el Escritor recibe el chunk completo y no un movimiento a la vez?
+Para optimizar el rendimiento del DD.
+5. Mi predicción de la MP-3, paso 1: ¿qué habría pasado sin el Procesador?
+My SQL no llegaria limpio y traeria datos innecesarios del dia anterior.
