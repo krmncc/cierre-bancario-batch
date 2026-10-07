@@ -41,3 +41,18 @@ Procesador: limpia los mocimientos
 Para optimizar el rendimiento del DD.
 5. Mi predicción de la MP-3, paso 1: ¿qué habría pasado sin el Procesador?
 My SQL no llegaria limpio y traeria datos innecesarios del dia anterior.
+
+## Día 3 · Parámetros, fallas y reinicio
+
+### Boleto de salida
+
+1. ¿Qué diferencia hay entre una JobInstance y una JobExecution? Usa como ejemplo el cierre del 25.
+Recordando que la intancia cuando es una tarea que ejecuta el job, mientras que una ejecucion se encarga de ejecutar la instancia una o varias veces. 
+2. ¿En qué caso Spring Batch se niega a correr un cierre, y en qué caso lo reinicia?
+se reinicia cuando falla un paso pero se niega a el cierre cuando es solo una linea la que produjo el error , mejor solo la escribe para verificar despues 
+3. En el reinicio del día 5, ¿por qué el step de carga leyó 10 movimientos y no 20?
+porque eran 10 los chunk's, ya no repite los que ya leyo
+4. ¿Qué diferencia hay entre un movimiento **filtrado** y uno **omitido**?
+filtrar se ecarga de seleccionar los movimentos que pertene cen a un cierto tipo,  y omotido se encrga de ignorar el renglón ilegible para que nosea el responsable de parar toda el cierre
+5. ¿Por qué importa el código de salida, si el estado ya queda en las tablas?
+Se reduce a una distinción clave: el estado operativo vs. el flujo de control de negocio.
