@@ -56,3 +56,24 @@ porque eran 10 los chunk's, ya no repite los que ya leyo
 filtrar se ecarga de seleccionar los movimentos que pertene cen a un cierto tipo,  y omotido se encrga de ignorar el renglón ilegible para que nosea el responsable de parar toda el cierre
 5. ¿Por qué importa el código de salida, si el estado ya queda en las tablas?
 Se reduce a una distinción clave: el estado operativo vs. el flujo de control de negocio.
+
+## Día 4 · De MySQL a MongoDB
+
+### Boleto de salida
+
+1. ¿Qué hace cada uno de los tres steps de tu Job, y de qué tipo es cada uno?
+-> Mongo cuadra con MySQL
+-> Step de tipo chunk que lee en MySQL y escribe en MongoDB
+-> Step de tipo chunk que vuelve a escribir todos los datos
+2. ¿Por qué el cierre del 9 no duplicó los saldos, y el del 10 (sin `@Id`) sí?
+Porque al saber el id puede reconocer en que punto se quedo u que movimientos faltaron por ejcutar, sin saber el id revisa todos desde el inicio porque son una instanci nueva
+3. Al reiniciar el cierre del 11, ¿por qué no se cargó otra vez el archivo?
+La misma razon de la pregunta anterior, ya sqabe que analizó los 15 movimientos, por lo tanto se queda con la misma información anterior
+4. ¿Qué diferencia hay entre `spring-boot-starter-data-mongodb` y «Spring Batch MongoDB» (`batch-data-mongodb`)?
+1.- Operaciones CRUD, consultas interactivas y aplicaciones OLTP/REST en tiempo real.
+2.- Procesamiento por lotes (Batch/ETL), migraciones masivas y trabajos pesados fuera de línea.
+
+## Lo que aprendí esta semana
+
+(Con tus palabras, en 5 a 10 renglones: qué es un proceso batch, qué piezas tiene un Job y qué hace SpringBatch cuando algo falla.)
+batch se dedica al procesamiento por lotes con la indicación para iniciar el análisis, realiza todo su proceso hasta que se apaga solo sin intervención humana; las piezas de un job son: instancia, las partes de un job son: lector, escritor y procesador; loo que hace cuando falla es escribir en las tablas porque huo una fallida ejecución indicando el error, borra lo generado al momento de fallar yse renicia exactamente donde hubo fallo, puede saltar ese renglon para no parar la ejecución completa o puede simplemente ignorar el renglon u otras acciones programadas si el fallo sucede.
