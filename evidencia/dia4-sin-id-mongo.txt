@@ -1,0 +1,24 @@
+45
+[
+  {
+    _id: ObjectId('6ac7e978c997404b478ab6ce'),
+    cuenta: '1001',
+    saldo: Decimal128('10003.00'),
+    movimientos: Long('24'),
+    _class: 'com.academia.banco.model.SaldoCuenta'
+  },
+  {
+    _id: ObjectId('6ac7ebf2d7eaaba4ebc8ece6'),
+    cuenta: '1001',
+    saldo: Decimal128('9353.00'),
+    movimientos: Long('26'),
+    _class: 'com.academia.banco.model.SaldoCuenta'
+  },
+  {
+    _id: ObjectId('6ac7ed2621397d4f4f88f950'),
+    cuenta: '1001',
+    saldo: Decimal128('9353.00'),
+    movimientos: Long('26'),
+    _class: 'com.academia.banco.model.SaldoCuenta'
+  }
+]
